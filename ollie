@@ -1,0 +1,51 @@
+import praw
+import os
+import random
+import datetime
+
+reddit = praw.Reddit(client_id="xxxxxxxxxxxxxxxxxx",
+                     client_secret="xxxxxxxxxxxxxxxxxxx",
+                     username="ollieapexbot",
+                     password="xxxxxxxxxxxxxxxx",
+                     user_agent="xxxxxxxxxxxxxxxxx")
+# print(reddit.user.me)
+
+
+class RedditBot:
+    def __init__(self):
+        self.trigger_word = "apex"
+        self.response_list = ["DID SOMEBODY SAY APEX!?", "MABAR APEX YUK"]
+        self.last_posted_time = datetime.datetime.now()
+
+    def find_match(self, comment):
+        if self.trigger_word in comment.body.casefold():
+            if self.cooled_down():
+                self.make_reply(comment)
+            else:
+                print(f"Cooling down! I last posted in {self.last_posted_time}.")
+
+    def cooled_down(self):
+        time_now = datetime.datetime.now()
+        difference = time_now - self.last_posted_time
+        if difference.total_seconds() > 60:
+            return True
+        else:
+            return False
+
+    def make_reply(self, comment):
+        try:
+            comment.reply(f"[{random.choice(self.response_list)}](https://youtu.be/VemenskFoBk)")
+            pass
+            print("commented on reddit")
+        except Exception as e:
+            print(e)
+        self.last_posted_time = datetime.datetime.now()
+
+
+bot = RedditBot()
+
+subreddit = reddit.subreddit("test")
+
+for c in subreddit.stream.comments(skip_existing=True):
+    print(c)
+    bot.find_match(c)
