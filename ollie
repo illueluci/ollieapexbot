@@ -18,18 +18,21 @@ STRING_OF_SUBREDDITS = "hololive+" \
                        "Animemes+" \
                        "goodanimemes+" \
                        "anime+" \
-                       "indowibu"
+                       "indowibu+" \
+                       "ollieapexbottest"
 
 class RedditBot:
     def __init__(self):
         self.trigger_word = "apex"
+        self.dont_trigger_word = ["u/illueluci", "bot", "peko"]
         self.response_list = ["DID SOMEBODY SAY APEX!?", "MABAR APEX YUK"]
         self.last_posted_time = datetime.datetime.now()
 
     def find_match(self, comment):
         print(comment.body.casefold())
-        if self.trigger_word in comment.body.casefold() and \
-                "u/illueluci" not in comment.body.casefold():
+        condition1 = self.trigger_word in comment.body.casefold()
+        condition2 = not(any([s in comment.body.casefold() for s in self.dont_trigger_word]))
+        if condition1 and condition2:
             if self.cooled_down():
                 self.make_reply(comment)
             else:
