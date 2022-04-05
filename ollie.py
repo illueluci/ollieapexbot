@@ -3,11 +3,11 @@ import os
 import random
 import datetime
 
-reddit = praw.Reddit(client_id="FiQ5Q2Q-nIA7JJEp-Chsfg",
-                     client_secret="SsiSPtJp8mbxhRLPw0l6P8t2NLLyzA",
-                     username="ollieapexbot",
-                     password="$X4skREJs@K9q7$L",
-                     user_agent="<ReplyCommentBot1.0> (by u/illueluci)")
+reddit = praw.Reddit(client_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                     client_secret="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                     username="xxxxxxxxxxxxxxxxxxxxx",
+                     password="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                     user_agent="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 # print(reddit.user.me)
 
 COOLDOWN = 30
