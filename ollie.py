@@ -28,6 +28,9 @@ STRING_OF_SUBREDDITS = temp.rstrip("+")
 
 # banned from VirtualYoutubers, goodanimemes not seeming to be welcoming,
 
+with open('already_replied.txt', 'a') as aaa:
+    pass
+
 
 class RedditBot:
     def __init__(self):
