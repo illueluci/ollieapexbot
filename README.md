@@ -7,3 +7,6 @@ Date : 6 April 2022
 - changes to subreddit list
 - infinite loop so the program keeps running (rather than terminating) when there is no wifi and resumes once connected to wifi
 - minor fixes
+
+Date : 10 April 2022
+- switched r/anime for r/ImSorryYagoo because this bot is banned in r/anime
