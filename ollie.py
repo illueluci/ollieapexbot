@@ -15,9 +15,9 @@ LIST_OF_SUBREDDITS = ["hololive",
                       "holostars",
                       "KureijiOllie",
                       "Animemes",
-                      "anime",
                       "indowibu",
                       "okbuddyhololive",
+                      "ImSorryYagoo",
                       "ollieapexbottest"]
 temp = ""
 for item in LIST_OF_SUBREDDITS:
@@ -26,7 +26,7 @@ for item in LIST_OF_SUBREDDITS:
 STRING_OF_SUBREDDITS = temp.rstrip("+")
 # print(STRING_OF_SUBREDDITS)
 
-# banned from VirtualYoutubers, goodanimemes not seeming to be welcoming,
+# banned from VirtualYoutubers and anime, goodanimemes not seeming to be welcoming,
 
 with open('already_replied.txt', 'a') as aaa:
     pass
