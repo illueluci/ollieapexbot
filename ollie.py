@@ -58,8 +58,10 @@ class RedditBot:
                 with open('already_replied.txt', 'a') as file:
                     print(comment.link_id, file=file)
             else:
+                print("*" * 50)
                 print(f"Cooling down! Please wait "
                       f"{COOLDOWN - (datetime.datetime.now() - self.last_posted_time).total_seconds()} seconds.")
+                print("*" * 50)
 
     def cooled_down(self):
         time_now = datetime.datetime.now()
@@ -70,13 +72,22 @@ class RedditBot:
             return False
 
     def make_reply(self, comment):
-        try:
-            comment.reply(f"[{random.choice(self.response_list)}](https://youtu.be/VemenskFoBk)\n\n"
-                          f"^This ^is ^a ^bot ^by ^u/illueluci")
-            print("commented on reddit")
-        except Exception as e:
-            print(e)
-        self.last_posted_time = datetime.datetime.now()
+        dice_roll = random.randint(0,2)
+        condition4 = (dice_roll == 0)  # 1 in 3 chances it comments
+        if condition4:
+            try:
+                comment.reply(f"[{random.choice(self.response_list)}](https://youtu.be/VemenskFoBk)\n\n"
+                              f"^^This ^^is ^^a ^^bot ^^by ^^u/illueluci")
+                print("*" * 50)
+                print("Commented on reddit!")
+                print("*" * 50)
+            except Exception as e:
+                print(e)
+            self.last_posted_time = datetime.datetime.now()
+        else:
+            print("*" * 50)
+            print(f"Failed dice roll! The bot rolled {dice_roll}.")
+            print("*" * 50)
 
 
 bot = RedditBot()
